@@ -24,7 +24,7 @@ import retrofit2.Response;
 
 public class Login extends AppCompatActivity {
 
-    private TextInputLayout loginUsernameLayout = findViewById(R.id.login_username_layout);
+    private TextInputLayout loginUsernameLayout;
     private TextInputEditText loginUsernameEdit;
     private TextInputLayout loginPasswdLayout;
     private TextInputEditText loginPasswdEdit;
@@ -47,6 +47,7 @@ public class Login extends AppCompatActivity {
     }
 
     private void assignLabels() {
+        loginUsernameLayout = findViewById(R.id.login_username_layout);
         loginUsernameEdit = findViewById(R.id.login_username_edit);
         loginPasswdLayout = findViewById(R.id.login_passwd_layout);
         loginPasswdEdit = findViewById(R.id.login_passwd_edit);
