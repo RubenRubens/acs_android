@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.rubenarriazu.acs">
+    package="com.rubenarriazu.paranoid">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -14,16 +14,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Acs">
         <activity
-            android:name=".ui.BaseNavigation"
+            android:name="com.rubenarriazu.paranoid.ui.BaseNavigation"
             android:exported="false" />
         <activity
-            android:name=".ui.registration.RegistrationView"
+            android:name="com.rubenarriazu.paranoid.ui.registration.RegistrationView"
             android:exported="false" />
         <activity
-            android:name=".ui.login.Login"
+            android:name="com.rubenarriazu.paranoid.ui.login.Login"
             android:exported="false" />
         <activity
-            android:name=".ui.landing_page.MainActivity"
+            android:name="com.rubenarriazu.paranoid.ui.landing_page.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
