@@ -62,7 +62,7 @@ public class Login extends AppCompatActivity {
         return loginPasswdEdit.getText().toString();
     }
 
-    private void apiLogin(String username, String password) {
+    public void apiLogin(String username, String password) {
         LoginRequest loginRequest = new LoginRequest(username, password);
         Endpoints endpoints = APIClient.retrofit.create(Endpoints.class);
         Call<LoginResponse> call = endpoints.login(loginRequest);
