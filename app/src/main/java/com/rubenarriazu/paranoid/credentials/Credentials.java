@@ -20,6 +20,7 @@ public class Credentials {
     private final String USERNAME_KEY = "username";
     private final String PASSWORD_KEY = "password";
     private final String TOKEN_KEY = "token";
+    private final String USER_PK_KEY = "userPK";
 
     private Context context;
 
@@ -77,6 +78,17 @@ public class Credentials {
     public String getPassword() {
         var sharedPreferences = getSharedPreferences();
         return sharedPreferences.getString(PASSWORD_KEY, "");
+    }
+
+    public void storeUserPK(int userPK) {
+        var editor = getSharedPreferences().edit();
+        editor.putInt(USER_PK_KEY, userPK);
+        editor.apply();
+    }
+
+    public int getUserPK() {
+        var sharedPreferences = getSharedPreferences();
+        return sharedPreferences.getInt(USER_PK_KEY, -1);
     }
 
 }

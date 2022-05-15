@@ -9,6 +9,7 @@ import android.view.View;
 import com.google.android.material.button.MaterialButton;
 import com.rubenarriazu.paranoid.R;
 import com.rubenarriazu.paranoid.credentials.Credentials;
+import com.rubenarriazu.paranoid.errors.ErrorCodes;
 import com.rubenarriazu.paranoid.ui.BaseNavigation;
 import com.rubenarriazu.paranoid.ui.login.Login;
 import com.rubenarriazu.paranoid.ui.registration.RegistrationView;
@@ -59,7 +60,9 @@ public class MainActivity extends AppCompatActivity {
         var username = credentials.getUsername();
         var password = credentials.getPassword();
         var token = credentials.getPassword();
-        return !username.isEmpty() && !password.isEmpty() && !token.isEmpty();
+        var userPK = credentials.getUserPK();
+        return !username.isEmpty() && !password.isEmpty() && !token.isEmpty()
+                && userPK != ErrorCodes.NULL_USER_PK;
     }
 
 }

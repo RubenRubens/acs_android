@@ -29,6 +29,10 @@ public interface Endpoints {
     Call<AccountResponse> getAccount(@Header("Authorization") String token,
                                      @Path("user_pk") int userPK);
 
+    @GET("account/profile_picture/{user_pk}/")
+    Call<ResponseBody> getProfilePicture(@Header("Authorization") String token,
+                                @Path("user_pk") int userPK);
+
     @GET("account/user/")
     Call<UserResponse> getUser(@Header("Authorization") String token);
 
@@ -58,5 +62,13 @@ public interface Endpoints {
 
     @GET("account/petition/")
     Call<List<PetitionResponse>> getPetitions(@Header("Authorization") String token);
+
+    @GET("photos/post/{post_pk}/")
+    Call<ResponseBody> getPost(@Header("Authorization") String token,
+                                    @Path("post_pk") int postPK);
+
+    @GET("photos/image/{post_pk}/")
+    Call<ResponseBody> getImage(@Header("Authorization") String token,
+                                    @Path("post_pk") int postPK);
 
 }
