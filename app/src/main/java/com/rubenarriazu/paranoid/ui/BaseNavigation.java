@@ -1,21 +1,44 @@
 package com.rubenarriazu.paranoid.ui;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.button.MaterialButton;
 import com.rubenarriazu.paranoid.R;
 import com.rubenarriazu.paranoid.credentials.Credentials;
 import com.rubenarriazu.paranoid.ui.feed.FeedFragment;
+import com.rubenarriazu.paranoid.ui.nav_menu.Configuration;
 import com.rubenarriazu.paranoid.ui.profile.ProfileFragment;
 import com.rubenarriazu.paranoid.ui.search.SearchFragment;
 
 public class BaseNavigation extends AppCompatActivity {
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.top_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_configuration:
+                var intent = new Intent(getApplicationContext(), Configuration.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
