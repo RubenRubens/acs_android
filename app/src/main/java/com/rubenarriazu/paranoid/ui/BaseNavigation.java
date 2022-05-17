@@ -1,6 +1,5 @@
 package com.rubenarriazu.paranoid.ui;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -25,19 +24,10 @@ public class BaseNavigation extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.top_menu, menu);
+        MenuItem configuration = menu.findItem(R.id.menu_configuration);
+        var configurationIntent = new Intent(this, Configuration.class);
+        configuration.setIntent(configurationIntent);
         return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_configuration:
-                var intent = new Intent(getApplicationContext(), Configuration.class);
-                startActivity(intent);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 
     @Override
