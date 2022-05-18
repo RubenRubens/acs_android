@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -472,6 +473,22 @@ public class APITest {
         conciseWait(this);
         if (httpCodes.size() == 0) {
             assertEquals(200, httpCodes.get(0));
+        }
+    }
+
+    @Test
+    @Order(15)
+    public void patchFirstNameOfUsername() {
+        var firstNameRequest = new FirstNameRequest("Tomas");
+        Endpoints endpoints = APIClient.retrofit.create(Endpoints.class);
+        Call<ResponseBody> call = endpoints.patchUser("Token " + martinToken, firstNameRequest);
+        try {
+            var response = call.execute();
+            if (!response.isSuccessful()) {
+                fail();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
