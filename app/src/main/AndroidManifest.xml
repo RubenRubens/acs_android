@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Acs">
         <activity
+            android:name="com.rubenarriazu.paranoid.ui.nav_menu.Configuration"
+            android:exported="false" />
+        <activity
             android:name="com.rubenarriazu.paranoid.ui.BaseNavigation"
             android:exported="false" />
         <activity
