@@ -19,4 +19,9 @@ public class APIClient {
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 
+    public static final Retrofit testing_retrofit = new Retrofit.Builder()
+            .baseUrl(Config.TESTING_WEB_SERVER)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+
 }
