@@ -12,6 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.button.MaterialButton;
 import com.rubenarriazu.paranoid.R;
@@ -20,6 +22,8 @@ import com.rubenarriazu.paranoid.api.Endpoints;
 import com.rubenarriazu.paranoid.api.responses.AccountResponse;
 import com.rubenarriazu.paranoid.api.responses.UserResponse;
 import com.rubenarriazu.paranoid.credentials.Credentials;
+import com.rubenarriazu.paranoid.ui.followers.FollowersFragment;
+import com.rubenarriazu.paranoid.ui.following.FollowingFragment;
 
 import java.io.InputStream;
 
@@ -60,6 +64,7 @@ public class ProfileFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
         assignUserPK(getArguments());
         assignViews(v);
+        initListenersToButtons(userPK);
         initProfileInfo(userPK);
         return v;
     }
@@ -86,6 +91,31 @@ public class ProfileFragment extends Fragment {
         username.setText("@" + userResponse.getUsername());
         setProfilePicture(userPK);
         setBio(userPK);
+    }
+
+    // Set a listener to followers and following buttons
+    private void initListenersToButtons(int userPK) {
+        followersButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                var followersFragment = FollowersFragment.newInstance(userPK);
+                setFragment(followersFragment);
+            }
+        });
+        followingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                var followingFragment = FollowingFragment.newInstance(userPK);
+                setFragment(followingFragment);
+            }
+        });
+    }
+
+    public void setFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.container, fragment);
+        fragmentTransaction.commit();
     }
 
     // Get the username, first name and last name from the API

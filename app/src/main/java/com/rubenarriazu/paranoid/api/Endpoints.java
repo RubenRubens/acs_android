@@ -81,6 +81,14 @@ public interface Endpoints {
     @GET("account/petition/")
     Call<List<PetitionResponse>> getPetitions(@Header("Authorization") String token);
 
+    @GET("account/followers/{user_pk}/")
+    Call<List<UserResponse>> getFollowers(@Header("Authorization") String token,
+                                          @Path("user_pk") int userPK);
+
+    @GET("account/following/{user_pk}/")
+    Call<List<UserResponse>> getFollowing(@Header("Authorization") String token,
+                                          @Path("user_pk") int userPK);
+
     @GET("photos/post/{post_pk}/")
     Call<ResponseBody> getPost(@Header("Authorization") String token,
                                @Path("post_pk") int postPK);
