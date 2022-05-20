@@ -42,7 +42,7 @@ public class APITest {
                 "martin", "1234", "Martin", "M");
 
         ArrayList<Integer> httpCodes = new ArrayList<>();
-        Endpoints endpoints = APIClient.retrofit.create(Endpoints.class);
+        Endpoints endpoints = APIClient.testing_retrofit.create(Endpoints.class);
         Call<ResponseBody> call = endpoints.registration(registrationRequest);
         call.enqueue(new Callback<ResponseBody>() {
 
@@ -74,7 +74,7 @@ public class APITest {
         LoginRequest loginRequest = new LoginRequest("martin", "1234");
 
         ArrayList<Integer> httpCodes = new ArrayList<>();
-        Endpoints endpoints = APIClient.retrofit.create(Endpoints.class);
+        Endpoints endpoints = APIClient.testing_retrofit.create(Endpoints.class);
         Call<LoginResponse> call = endpoints.login(loginRequest);
         call.enqueue(new Callback<LoginResponse>() {
 
@@ -105,7 +105,7 @@ public class APITest {
     @Order(3)
     public void getUser() {
         ArrayList<Integer> httpCodes = new ArrayList<>();
-        Endpoints endpoints = APIClient.retrofit.create(Endpoints.class);
+        Endpoints endpoints = APIClient.testing_retrofit.create(Endpoints.class);
         Call<UserResponse> call = endpoints.getUser("Token " + martinToken);
         call.enqueue(new Callback<UserResponse>() {
 
@@ -137,7 +137,7 @@ public class APITest {
     @Order(4)
     public void getUserById() {
         ArrayList<Integer> httpCodes = new ArrayList<>();
-        Endpoints endpoints = APIClient.retrofit.create(Endpoints.class);
+        Endpoints endpoints = APIClient.testing_retrofit.create(Endpoints.class);
         Call<UserResponse> call = endpoints.getUser("Token " + martinToken, martinID);
         call.enqueue(new Callback<UserResponse>() {
 
@@ -167,7 +167,7 @@ public class APITest {
     @Order(5)
     public void accounts() {
         ArrayList<Integer> httpCodes = new ArrayList<>();
-        Endpoints endpoints = APIClient.retrofit.create(Endpoints.class);
+        Endpoints endpoints = APIClient.testing_retrofit.create(Endpoints.class);
         Call<List<AccountResponse>> call = endpoints.getAccounts("Token " + martinToken);
         call.enqueue(new Callback<List<AccountResponse>>() {
 
@@ -197,7 +197,7 @@ public class APITest {
     @Order(6)
     public void account() {
         ArrayList<Integer> httpCodes = new ArrayList<>();
-        Endpoints endpoints = APIClient.retrofit.create(Endpoints.class);
+        Endpoints endpoints = APIClient.testing_retrofit.create(Endpoints.class);
         Call<AccountResponse> call = endpoints.getAccount("Token " + martinToken, martinID);
         call.enqueue(new Callback<AccountResponse>() {
 
@@ -228,7 +228,7 @@ public class APITest {
     public void search() {
         SearchUserRequest searchUserRequest = new SearchUserRequest("m");
         ArrayList<Integer> httpCodes = new ArrayList<>();
-        Endpoints endpoints = APIClient.retrofit.create(Endpoints.class);
+        Endpoints endpoints = APIClient.testing_retrofit.create(Endpoints.class);
         Call<List<UserResponse>> call = endpoints.searchUser("Token " + martinToken, searchUserRequest);
         call.enqueue(new Callback<List<UserResponse>>() {
             @Override
@@ -255,7 +255,7 @@ public class APITest {
     @Test
     @Order(8)
     public void createASecondUser() {
-        Endpoints endpoints = APIClient.retrofit.create(Endpoints.class);
+        Endpoints endpoints = APIClient.testing_retrofit.create(Endpoints.class);
 
         RegistrationRequest registrationRequest = new RegistrationRequest(
                 "sofia", "1234", "Sofia", "S");
@@ -318,7 +318,7 @@ public class APITest {
     public void sendFollowerPetition() {
         SendPetitionRequest sendPetitionRequest = new SendPetitionRequest(sofiaID);
         ArrayList<Integer> httpCodes = new ArrayList<>();
-        Endpoints endpoints = APIClient.retrofit.create(Endpoints.class);
+        Endpoints endpoints = APIClient.testing_retrofit.create(Endpoints.class);
         Call<PetitionResponse> call = endpoints.sendPetition("Token " + martinToken, sendPetitionRequest);
         call.enqueue(new Callback<PetitionResponse>() {
             @Override
@@ -347,7 +347,7 @@ public class APITest {
     @Order(10)
     public void getPetition() {
         ArrayList<Integer> httpCodes = new ArrayList<>();
-        Endpoints endpoints = APIClient.retrofit.create(Endpoints.class);
+        Endpoints endpoints = APIClient.testing_retrofit.create(Endpoints.class);
         Call<PetitionResponse> call = endpoints.getPetition("Token " + sofiaToken, petitionID);
         call.enqueue(new Callback<PetitionResponse>() {
             @Override
@@ -373,7 +373,7 @@ public class APITest {
     @Order(11)
     public void discardPetition() {
         ArrayList<Integer> httpCodes = new ArrayList<>();
-        Endpoints endpoints = APIClient.retrofit.create(Endpoints.class);
+        Endpoints endpoints = APIClient.testing_retrofit.create(Endpoints.class);
         Call<PetitionResponse> call = endpoints.discardPetition("Token " + sofiaToken, petitionID);
         call.enqueue(new Callback<PetitionResponse>() {
             @Override
@@ -400,7 +400,7 @@ public class APITest {
     public void sendNewPetition() {
         SendPetitionRequest sendPetitionRequest = new SendPetitionRequest(sofiaID);
         ArrayList<Integer> httpCodes = new ArrayList<>();
-        Endpoints endpoints = APIClient.retrofit.create(Endpoints.class);
+        Endpoints endpoints = APIClient.testing_retrofit.create(Endpoints.class);
         Call<PetitionResponse> call = endpoints.sendPetition("Token " + martinToken, sendPetitionRequest);
         call.enqueue(new Callback<PetitionResponse>() {
             @Override
@@ -428,7 +428,7 @@ public class APITest {
     @Order(13)
     public void getPetitions() {
         ArrayList<Integer> httpCodes = new ArrayList<>();
-        Endpoints endpoints = APIClient.retrofit.create(Endpoints.class);
+        Endpoints endpoints = APIClient.testing_retrofit.create(Endpoints.class);
         Call<List<PetitionResponse>> call = endpoints.getPetitions("Token " + sofiaToken);
         call.enqueue(new Callback<List<PetitionResponse>>() {
             @Override
@@ -456,7 +456,7 @@ public class APITest {
     public void acceptPetition() {
         AcceptPetitionRequest acceptPetitionRequest = new AcceptPetitionRequest(martinID);
         ArrayList<Integer> httpCodes = new ArrayList<>();
-        Endpoints endpoints = APIClient.retrofit.create(Endpoints.class);
+        Endpoints endpoints = APIClient.testing_retrofit.create(Endpoints.class);
         Call<PetitionResponse> call = endpoints.acceptPetition("Token " + sofiaToken, acceptPetitionRequest);
         call.enqueue(new Callback<PetitionResponse>() {
             @Override
@@ -480,7 +480,7 @@ public class APITest {
     @Order(15)
     public void patchFirstNameOfUsername() {
         var firstNameRequest = new FirstNameRequest("Tomas");
-        Endpoints endpoints = APIClient.retrofit.create(Endpoints.class);
+        Endpoints endpoints = APIClient.testing_retrofit.create(Endpoints.class);
         Call<ResponseBody> call = endpoints.patchUser("Token " + martinToken, firstNameRequest);
         try {
             var response = call.execute();
