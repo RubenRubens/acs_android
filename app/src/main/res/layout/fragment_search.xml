@@ -34,11 +34,10 @@
     <ListView
         android:id="@+id/users_list"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
-        app:layout_constraintBottom_toTopOf="parent"
         app:layout_constraintTop_toBottomOf="@id/search"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
