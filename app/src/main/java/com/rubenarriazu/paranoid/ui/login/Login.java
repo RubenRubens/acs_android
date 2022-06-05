@@ -105,7 +105,7 @@ public class Login extends AppCompatActivity {
 
     // Given an authentication token, returns the user PK
     private int getUserPK(String token) {
-        Endpoints endpoints = APIClient.newRetrofit().create(Endpoints.class);
+        Endpoints endpoints = APIClient.retrofit.create(Endpoints.class);
         Call<UserResponse> call = endpoints.getUser("Token " + token);
         try {
             Response<UserResponse> response = call.execute();
