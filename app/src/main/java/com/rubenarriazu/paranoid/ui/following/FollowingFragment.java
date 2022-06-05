@@ -40,18 +40,18 @@ public class FollowingFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_followers, container, false);
+        View v = inflater.inflate(R.layout.fragment_following, container, false);
         usersList = v.findViewById(R.id.users_list);
         int userPK = getArguments().getInt(USER_PK_KEY);
-        apiCallFollowers(userPK);
+        apiCallFollowing(userPK);
         return v;
     }
     
-    private void apiCallFollowers(int userPK) {
+    private void apiCallFollowing(int userPK) {
         Endpoints endpoints = APIClient.retrofit.create(Endpoints.class);
         var credentials = new Credentials(getContext());
         String token = credentials.getToken();
-        Call<List<UserResponse>> call = endpoints.getFollowers("Token " + token, userPK);
+        Call<List<UserResponse>> call = endpoints.getFollowing("Token " + token, userPK);
         call.enqueue(new Callback<List<UserResponse>>() {
             @Override
             public void onResponse(Call<List<UserResponse>> call, Response<List<UserResponse>> response) {
