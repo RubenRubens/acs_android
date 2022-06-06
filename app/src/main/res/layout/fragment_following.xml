@@ -20,24 +20,24 @@
         android:orientation="vertical"
         app:layout_constraintGuide_end="20dp" />
 
-    <EditText
-        android:id="@+id/search"
+    <TextView
+        android:id="@+id/title_followers"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:hint="Who are you looking for?"
-        android:drawableStart="@drawable/baseline_search_black_36"
-        app:layout_constraintStart_toStartOf="@id/guideline_start"
-        app:layout_constraintEnd_toEndOf="@id/guideline_end"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:text="Following"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+        app:layout_constraintStart_toStartOf="@+id/guideline_start"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
         android:id="@+id/users_list"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
-        app:layout_constraintTop_toBottomOf="@id/search"/>
+        app:layout_constraintTop_toBottomOf="@id/title_followers"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

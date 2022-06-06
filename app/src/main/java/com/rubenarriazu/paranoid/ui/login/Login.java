@@ -3,8 +3,8 @@ package com.rubenarriazu.paranoid.ui.login;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import com.google.android.material.button.MaterialButton;
@@ -15,11 +15,14 @@ import com.rubenarriazu.paranoid.api.APIClient;
 import com.rubenarriazu.paranoid.api.Endpoints;
 import com.rubenarriazu.paranoid.api.requests.LoginRequest;
 import com.rubenarriazu.paranoid.api.responses.LoginResponse;
+import com.rubenarriazu.paranoid.api.responses.UserResponse;
 import com.rubenarriazu.paranoid.credentials.Credentials;
+import com.rubenarriazu.paranoid.errors.ErrorCodes;
 import com.rubenarriazu.paranoid.ui.BaseNavigation;
 
+import java.io.IOException;
+
 import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Login extends AppCompatActivity {
@@ -41,7 +44,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 String username = obtainUsername();
                 String password = obtainPassword();
-                apiLogin(username, password);
+                new LoginAttempt().execute(username, password);
             }
         });
     }
@@ -62,38 +65,15 @@ public class Login extends AppCompatActivity {
         return loginPasswdEdit.getText().toString();
     }
 
-    public void apiLogin(String username, String password) {
-        LoginRequest loginRequest = new LoginRequest(username, password);
-        Endpoints endpoints = APIClient.retrofit.create(Endpoints.class);
-        Call<LoginResponse> call = endpoints.login(loginRequest);
-        call.enqueue(new Callback<LoginResponse>() {
-            @Override
-            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                if (response.isSuccessful()) {
-                    LoginResponse loginResponse = response.body();
-                    String token = loginResponse.getToken();
-                    storeCredentials(username, password, token);
-                    goToActivity(BaseNavigation.class);
-                } else {
-                    showErrorMessage();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<LoginResponse> call, Throwable t) {
-                Log.e("retrofit", t.getMessage());
-            }
-        });
-    }
-
-    private void storeCredentials(String username, String password, String token) {
+    private void storeCredentials(String username, String password, String token, int userPK) {
         Credentials credentials = new Credentials(getApplicationContext());
         credentials.storeUsername(username);
         credentials.storePassword(password);
         credentials.storeToken(token);
+        credentials.storeUserPK(userPK);
     }
 
-    private void showErrorMessage() {
+    private void showAuthErrorMessage() {
         loginUsernameLayout.setError("Incorrect username or password");
         loginPasswdLayout.setError("Incorrect username or password");
         loginUsernameEdit.setText("");
@@ -103,6 +83,57 @@ public class Login extends AppCompatActivity {
     private void goToActivity(Class<?>  activity) {
         Intent intent = new Intent(getApplicationContext(), activity);
         startActivity(intent);
+    }
+
+    // Given an username and password, returns a token
+    public String getToken(String username, String password) {
+        LoginRequest loginRequest = new LoginRequest(username, password);
+        Endpoints endpoints = APIClient.retrofit.create(Endpoints.class);
+        Call<LoginResponse> call = endpoints.login(loginRequest);
+        try {
+            Response<LoginResponse> response = call.execute();
+            if (response.isSuccessful()) {
+                var loginResponse = response.body();
+                return loginResponse.getToken();
+            }
+            return ErrorCodes.NOT_VALID_AUTH;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return e.getMessage();
+        }
+    }
+
+    // Given an authentication token, returns the user PK
+    private int getUserPK(String token) {
+        Endpoints endpoints = APIClient.retrofit.create(Endpoints.class);
+        Call<UserResponse> call = endpoints.getUser("Token " + token);
+        try {
+            Response<UserResponse> response = call.execute();
+            if (response.isSuccessful()) {
+                return response.body().getId();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return ErrorCodes.NULL_USER_PK;
+    }
+
+    // Attempt to login given an username and password
+    private class LoginAttempt extends AsyncTask<String, Void, Void> {
+        @Override
+        protected Void doInBackground(String... strings) {
+            String username = strings[0];
+            String password = strings[1];
+            var token = getToken(username, password);
+            if (token.equals(ErrorCodes.NOT_VALID_AUTH)) {
+                showAuthErrorMessage();
+                return null;
+            }
+            var userPK = getUserPK(token);
+            storeCredentials(username, password, token, userPK);
+            goToActivity(BaseNavigation.class);
+            return null;
+        }
     }
 
 }

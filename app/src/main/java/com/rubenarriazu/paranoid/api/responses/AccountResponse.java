@@ -13,4 +13,15 @@ public class AccountResponse {
     @SerializedName("user")
     private int userID;
 
+    public String getBio() {
+        return bio;
+    }
+
+    public String getProfilePicture() {
+        return profilePicture;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
 }

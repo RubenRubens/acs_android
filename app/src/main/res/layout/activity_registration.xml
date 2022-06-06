@@ -21,6 +21,18 @@
         android:orientation="vertical"
         app:layout_constraintGuide_end="20dp" />
 
+    <!-- Title -->
+    <TextView
+        android:id="@+id/registration_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Create an account"
+        style="@style/Header1"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+        app:layout_constraintStart_toStartOf="@+id/guideline_start"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <!-- Username -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/username_layout"
@@ -30,7 +42,7 @@
         android:hint="Username"
         app:layout_constraintEnd_toStartOf="@+id/guideline_end"
         app:layout_constraintStart_toStartOf="@+id/guideline_start"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/registration_title"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
 
         <com.google.android.material.textfield.TextInputEditText
