@@ -33,8 +33,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
- * Given a user PK, inflates a profile with the information
- * of that user.
+ * Given a user PK that is a follower or the user of the account, inflates a profile with the
+ * information of that user.
  */
 public class ProfileFragment extends Fragment {
 
@@ -80,7 +80,6 @@ public class ProfileFragment extends Fragment {
         followersButton = v.findViewById(R.id.button_followers);
         followingButton = v.findViewById(R.id.button_following);
         profilePicture = v.findViewById(R.id.image_profile);
-        postImage = v.findViewById(R.id.image_post);
     }
 
     // Set the information of the user and its account
