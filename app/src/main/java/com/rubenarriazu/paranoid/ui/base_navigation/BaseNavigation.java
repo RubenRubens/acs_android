@@ -1,4 +1,4 @@
-package com.rubenarriazu.paranoid.ui;
+package com.rubenarriazu.paranoid.ui.base_navigation;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -14,10 +14,10 @@ import android.view.View;
 import com.google.android.material.button.MaterialButton;
 import com.rubenarriazu.paranoid.R;
 import com.rubenarriazu.paranoid.credentials.Credentials;
-import com.rubenarriazu.paranoid.ui.feed.FeedFragment;
+import com.rubenarriazu.paranoid.ui.base_navigation.feed.FeedFragment;
 import com.rubenarriazu.paranoid.ui.nav_menu.Configuration;
-import com.rubenarriazu.paranoid.ui.profile.ProfileFragment;
-import com.rubenarriazu.paranoid.ui.search.SearchFragment;
+import com.rubenarriazu.paranoid.ui.base_navigation.profile.ProfileFragment;
+import com.rubenarriazu.paranoid.ui.base_navigation.search.SearchFragment;
 
 public class BaseNavigation extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.rubenarriazu.paranoid.ui.search;
+package com.rubenarriazu.paranoid.ui.base_navigation.search;
 
 import android.content.Context;
 import android.view.LayoutInflater;

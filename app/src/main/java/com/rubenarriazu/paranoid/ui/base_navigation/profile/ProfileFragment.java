@@ -1,4 +1,4 @@
-package com.rubenarriazu.paranoid.ui.profile;
+package com.rubenarriazu.paranoid.ui.base_navigation.profile;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -22,8 +22,8 @@ import com.rubenarriazu.paranoid.api.Endpoints;
 import com.rubenarriazu.paranoid.api.responses.AccountResponse;
 import com.rubenarriazu.paranoid.api.responses.UserResponse;
 import com.rubenarriazu.paranoid.credentials.Credentials;
-import com.rubenarriazu.paranoid.ui.followers.FollowersFragment;
-import com.rubenarriazu.paranoid.ui.following.FollowingFragment;
+import com.rubenarriazu.paranoid.ui.base_navigation.profile.followers.FollowersFragment;
+import com.rubenarriazu.paranoid.ui.base_navigation.profile.following.FollowingFragment;
 
 import java.io.InputStream;
 
