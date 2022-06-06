@@ -1,4 +1,4 @@
-package com.rubenarriazu.paranoid.ui.following;
+package com.rubenarriazu.paranoid.ui.base_navigation.profile.following;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,7 +15,7 @@ import com.rubenarriazu.paranoid.api.APIClient;
 import com.rubenarriazu.paranoid.api.Endpoints;
 import com.rubenarriazu.paranoid.api.responses.UserResponse;
 import com.rubenarriazu.paranoid.credentials.Credentials;
-import com.rubenarriazu.paranoid.ui.search.UserAdapter;
+import com.rubenarriazu.paranoid.ui.base_navigation.search.UserAdapter;
 
 import java.util.List;
 

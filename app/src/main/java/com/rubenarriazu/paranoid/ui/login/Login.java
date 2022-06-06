@@ -18,7 +18,7 @@ import com.rubenarriazu.paranoid.api.responses.LoginResponse;
 import com.rubenarriazu.paranoid.api.responses.UserResponse;
 import com.rubenarriazu.paranoid.credentials.Credentials;
 import com.rubenarriazu.paranoid.errors.ErrorCodes;
-import com.rubenarriazu.paranoid.ui.BaseNavigation;
+import com.rubenarriazu.paranoid.ui.base_navigation.BaseNavigation;
 
 import java.io.IOException;
 
