@@ -80,7 +80,6 @@ public class ProfileFragment extends Fragment {
         followersButton = v.findViewById(R.id.button_followers);
         followingButton = v.findViewById(R.id.button_following);
         profilePicture = v.findViewById(R.id.image_profile);
-        postImage = v.findViewById(R.id.image_post);
     }
 
     // Set the information of the user and its account
