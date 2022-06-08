@@ -15,7 +15,7 @@ import com.google.android.material.button.MaterialButton;
 import com.rubenarriazu.paranoid.R;
 import com.rubenarriazu.paranoid.credentials.Credentials;
 import com.rubenarriazu.paranoid.ui.base_navigation.feed.FeedFragment;
-import com.rubenarriazu.paranoid.ui.nav_menu.Configuration;
+import com.rubenarriazu.paranoid.ui.nav_menu.Settings;
 import com.rubenarriazu.paranoid.ui.base_navigation.profile.ProfileFragment;
 import com.rubenarriazu.paranoid.ui.base_navigation.search.SearchFragment;
 
@@ -25,7 +25,7 @@ public class BaseNavigation extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.top_menu, menu);
         MenuItem configuration = menu.findItem(R.id.menu_configuration);
-        var configurationIntent = new Intent(this, Configuration.class);
+        var configurationIntent = new Intent(this, Settings.class);
         configuration.setIntent(configurationIntent);
         return true;
     }
