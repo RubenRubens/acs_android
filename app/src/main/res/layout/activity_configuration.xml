@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.nav_menu.Configuration">
+    tools:context=".ui.nav_menu.Settings">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -29,6 +29,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:paddingBottom="10dp"
+        android:layout_marginBottom="10dp"
         style="@style/Header1"
         android:text="Settings"
         app:layout_constraintStart_toStartOf="@+id/guideline_start"
@@ -197,6 +199,28 @@
         app:layout_constraintTop_toBottomOf="@id/bio_layout"
         app:layout_constraintEnd_toStartOf="@+id/guideline_end"
         app:layout_constraintStart_toStartOf="@+id/guideline_start" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/logout_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="?attr/materialButtonOutlinedStyle"
+            android:text="Log out"
+            app:layout_constraintTop_toBottomOf="@id/save_button"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/delete_account_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Delete account"
+            style="?attr/materialButtonOutlinedStyle"
+            app:strokeColor="@color/design_default_color_error"
+            android:textColor="@color/design_default_color_error"
+            app:layout_constraintTop_toBottomOf="@id/logout_button"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
