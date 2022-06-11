@@ -56,25 +56,15 @@
                 app:layout_constraintTop_toBottomOf="@+id/text_name" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_followers"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Followers"
-                app:layout_constraintEnd_toEndOf="@+id/text_bio"
-                app:layout_constraintStart_toStartOf="@+id/text_bio"
-                app:layout_constraintTop_toBottomOf="@+id/text_bio" />
-
-            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_send_petition"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Following"
+                android:layout_marginBottom="8dp"
+                android:text="Send a following petition"
                 app:layout_constraintEnd_toEndOf="@+id/text_bio"
                 app:layout_constraintStart_toStartOf="@+id/text_bio"
-                app:layout_constraintTop_toBottomOf="@+id/button_followers" />
+                app:layout_constraintBottom_toBottomOf="parent" />
 
             <ImageView
                 android:id="@+id/image_profile"

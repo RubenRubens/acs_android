@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 
 import com.google.android.material.button.MaterialButton;
 import com.rubenarriazu.paranoid.R;
@@ -61,6 +62,9 @@ public class BaseNavigation extends AppCompatActivity {
                 setFragment(profileFragment);
             }
         });
+
+        FeedFragment feedFragment = new FeedFragment();
+        setFragment(feedFragment);
     }
 
     public void setFragment(Fragment fragment) {
