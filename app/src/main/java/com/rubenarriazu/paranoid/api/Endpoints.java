@@ -65,6 +65,10 @@ public interface Endpoints {
     Call<ResponseBody> deleteUser(@Header("Authorization") String token,
                                   @Path("user_pk") int userPK);
 
+    @GET("account/i_am_a_follower/{user_pk}/")
+    Call<ResponseBody> iAmAFollower(@Header("Authorization") String token,
+                                    @Path("user_pk") int userPK);
+
     @POST("account/search/")
     Call<List<UserResponse>> searchUser(@Header("Authorization") String token,
                                         @Body SearchUserRequest searchUserRequest);
