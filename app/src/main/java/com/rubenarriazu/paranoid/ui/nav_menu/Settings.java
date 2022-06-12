@@ -292,11 +292,9 @@ public class Settings extends AppCompatActivity {
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if (response.isSuccessful()) {
-                    flushStoredCredentials(getApplicationContext());
-                    var landingPageIntent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(landingPageIntent);
-                }
+                flushStoredCredentials(getApplicationContext());
+                var landingPageIntent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(landingPageIntent);
             }
 
             @Override
