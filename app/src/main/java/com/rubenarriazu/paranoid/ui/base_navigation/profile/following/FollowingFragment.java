@@ -41,7 +41,7 @@ public class FollowingFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_following, container, false);
-        usersList = v.findViewById(R.id.users_list);
+        usersList = v.findViewById(R.id.petitions_list);
         int userPK = getArguments().getInt(USER_PK_KEY);
         apiCallFollowing(userPK);
         return v;

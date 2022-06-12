@@ -41,7 +41,7 @@ public class FollowersFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_followers, container, false);
-        usersList = v.findViewById(R.id.users_list);
+        usersList = v.findViewById(R.id.petitions_list);
         int userPK = getArguments().getInt(USER_PK_KEY);
         apiCallFollowers(userPK);
         return v;
