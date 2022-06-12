@@ -99,7 +99,7 @@ public class Login extends AppCompatActivity {
             return ErrorCodes.NOT_VALID_AUTH;
         } catch (IOException e) {
             e.printStackTrace();
-            return e.getMessage();
+            return ErrorCodes.NOT_VALID_AUTH;
         }
     }
 
@@ -126,7 +126,12 @@ public class Login extends AppCompatActivity {
             String password = strings[1];
             var token = getToken(username, password);
             if (token.equals(ErrorCodes.NOT_VALID_AUTH)) {
-                showAuthErrorMessage();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        showAuthErrorMessage();
+                    }
+                });
                 return null;
             }
             var userPK = getUserPK(token);
