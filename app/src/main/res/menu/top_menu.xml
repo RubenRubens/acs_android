@@ -10,7 +10,7 @@
     <item
         android:id="@+id/menu_configuration"
         android:title=""
-        android:icon="@drawable/settings_black_24dp"
+        android:icon="@drawable/settings_48px"
         android:iconTint="@color/white"
         app:showAsAction="always"/>
 </menu>
