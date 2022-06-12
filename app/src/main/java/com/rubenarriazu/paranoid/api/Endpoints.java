@@ -23,7 +23,7 @@ public interface Endpoints {
     @POST("account/login/")
     Call<LoginResponse> login(@Body LoginRequest loginRequest);
 
-    @GET("account/logout/")
+    @POST("account/logout/")
     Call<ResponseBody> logout(@Header("Authorization") String token);
 
     @GET("account/account/")
