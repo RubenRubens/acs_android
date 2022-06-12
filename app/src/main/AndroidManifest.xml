@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Paranoid">
         <activity
+            android:name="com.rubenarriazu.paranoid.ui.nav_menu.FollowerPetition"
+            android:exported="false" />
+        <activity
             android:name="com.rubenarriazu.paranoid.ui.nav_menu.Settings"
             android:exported="false" />
         <activity

@@ -25,8 +25,6 @@ import com.rubenarriazu.paranoid.api.responses.AccountResponse;
 import com.rubenarriazu.paranoid.api.responses.PetitionResponse;
 import com.rubenarriazu.paranoid.api.responses.UserResponse;
 import com.rubenarriazu.paranoid.credentials.Credentials;
-import com.rubenarriazu.paranoid.ui.base_navigation.profile.followers.FollowersFragment;
-import com.rubenarriazu.paranoid.ui.base_navigation.profile.following.FollowingFragment;
 
 import java.io.InputStream;
 
@@ -79,7 +77,7 @@ public class LimitedAccessProfileFragment extends Fragment {
         name = v.findViewById(R.id.text_name);
         username = v.findViewById(R.id.text_username);
         bio = v.findViewById(R.id.text_bio);
-        sendPetitionButton = v.findViewById(R.id.button_send_petition);
+        sendPetitionButton = v.findViewById(R.id.button_accept);
         profilePicture = v.findViewById(R.id.image_profile);
     }
 
@@ -199,6 +197,13 @@ public class LimitedAccessProfileFragment extends Fragment {
                         @Override
                         public void run() {
                             profilePicture.setImageBitmap(bitmap);
+                        }
+                    });
+                } else {
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            profilePicture.setImageResource(R.drawable.baseline_person_24);
                         }
                     });
                 }

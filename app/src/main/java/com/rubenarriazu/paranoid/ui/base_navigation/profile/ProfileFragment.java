@@ -78,7 +78,7 @@ public class ProfileFragment extends Fragment {
         username = v.findViewById(R.id.text_username);
         bio = v.findViewById(R.id.text_bio);
         followersButton = v.findViewById(R.id.button_followers);
-        followingButton = v.findViewById(R.id.button_send_petition);
+        followingButton = v.findViewById(R.id.button_accept);
         profilePicture = v.findViewById(R.id.image_profile);
     }
 
@@ -184,6 +184,13 @@ public class ProfileFragment extends Fragment {
                         @Override
                         public void run() {
                             profilePicture.setImageBitmap(bitmap);
+                        }
+                    });
+                } else {
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            profilePicture.setImageResource(R.drawable.baseline_person_24);
                         }
                     });
                 }

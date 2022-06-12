@@ -67,7 +67,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/text_bio" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_send_petition"
+                android:id="@+id/button_accept"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

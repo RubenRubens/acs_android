@@ -21,7 +21,6 @@ import com.rubenarriazu.paranoid.R;
 import com.rubenarriazu.paranoid.api.APIClient;
 import com.rubenarriazu.paranoid.api.Endpoints;
 import com.rubenarriazu.paranoid.api.requests.SearchUserRequest;
-import com.rubenarriazu.paranoid.api.responses.AccountResponse;
 import com.rubenarriazu.paranoid.api.responses.UserResponse;
 import com.rubenarriazu.paranoid.credentials.Credentials;
 import com.rubenarriazu.paranoid.ui.base_navigation.profile.LimitedAccessProfileFragment;
@@ -43,7 +42,7 @@ public class SearchFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_search, container, false);
-        usersList = v.findViewById(R.id.users_list);
+        usersList = v.findViewById(R.id.petitions_list);
         queryText = v.findViewById(R.id.search);
         queryText.addTextChangedListener(new TextWatcher() {
             @Override
