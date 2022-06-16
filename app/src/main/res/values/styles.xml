@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="LandingTitle">
+        <item name="android:textColor">@color/material_on_background_emphasis_high_type</item>
+        <item name="android:textFontWeight">@integer/material_motion_duration_short_1</item>
+        <item name="android:textSize">46sp</item>
+        <item name="android:fontFamily">@font/days_one</item>
+    </style>
     <style name="Header1">
         <item name="android:textSize">22sp</item>
         <item name="android:textStyle">bold</item>
@@ -14,5 +20,9 @@
     </style>
     <style name="ProfileCard">
         <item name="cardElevation">30dp</item>
+    </style>
+    <style name="SearchUsersInput">
+        <item name="android:drawableStart">@drawable/baseline_search_black_36</item>
+        <item name="android:drawableTint">@color/material_on_background_emphasis_high_type</item>
     </style>
 </resources>

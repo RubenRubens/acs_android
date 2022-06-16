@@ -1,9 +1,10 @@
-package com.rubenarriazu.paranoid.ui.search;
+package com.rubenarriazu.paranoid.ui.base_navigation.search;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
@@ -36,4 +37,5 @@ public class UserAdapter extends ArrayAdapter<UserResponse> {
         username.setText("@" + user.getUsername());
         return element;
     }
+
 }

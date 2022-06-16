@@ -10,7 +10,7 @@ import com.google.android.material.button.MaterialButton;
 import com.rubenarriazu.paranoid.R;
 import com.rubenarriazu.paranoid.credentials.Credentials;
 import com.rubenarriazu.paranoid.errors.ErrorCodes;
-import com.rubenarriazu.paranoid.ui.BaseNavigation;
+import com.rubenarriazu.paranoid.ui.base_navigation.BaseNavigation;
 import com.rubenarriazu.paranoid.ui.login.Login;
 import com.rubenarriazu.paranoid.ui.registration.RegistrationView;
 

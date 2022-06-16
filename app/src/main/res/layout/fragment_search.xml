@@ -26,13 +26,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:hint="Who are you looking for?"
-        android:drawableStart="@drawable/baseline_search_black_36"
+        style="@style/SearchUsersInput"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <ListView
-        android:id="@+id/users_list"
+        android:id="@+id/petitions_list"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"

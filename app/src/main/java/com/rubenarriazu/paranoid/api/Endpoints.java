@@ -23,6 +23,9 @@ public interface Endpoints {
     @POST("account/login/")
     Call<LoginResponse> login(@Body LoginRequest loginRequest);
 
+    @POST("account/logout/")
+    Call<ResponseBody> logout(@Header("Authorization") String token);
+
     @GET("account/account/")
     Call<List<AccountResponse>> getAccounts(@Header("Authorization") String token);
 
@@ -57,6 +60,14 @@ public interface Endpoints {
     @GET("account/user/{user_pk}/")
     Call<UserResponse> getUser(@Header("Authorization") String token,
                                @Path("user_pk") int userPK);
+
+    @DELETE("account/user/{user_pk}/")
+    Call<ResponseBody> deleteUser(@Header("Authorization") String token,
+                                  @Path("user_pk") int userPK);
+
+    @GET("account/i_am_a_follower/{user_pk}/")
+    Call<ResponseBody> iAmAFollower(@Header("Authorization") String token,
+                                    @Path("user_pk") int userPK);
 
     @POST("account/search/")
     Call<List<UserResponse>> searchUser(@Header("Authorization") String token,

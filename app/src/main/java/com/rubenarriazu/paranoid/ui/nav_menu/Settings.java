@@ -1,13 +1,15 @@
 package com.rubenarriazu.paranoid.ui.nav_menu;
 
+import static com.rubenarriazu.paranoid.credentials.CredentialsUtils.flushStoredCredentials;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.rubenarriazu.paranoid.R;
@@ -20,13 +22,14 @@ import com.rubenarriazu.paranoid.api.requests.PasswordRequest;
 import com.rubenarriazu.paranoid.api.responses.AccountResponse;
 import com.rubenarriazu.paranoid.api.responses.UserResponse;
 import com.rubenarriazu.paranoid.credentials.Credentials;
+import com.rubenarriazu.paranoid.ui.landing_page.MainActivity;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Configuration extends AppCompatActivity {
+public class Settings extends AppCompatActivity {
 
     private TextInputLayout firstNameLayout;
     private TextInputEditText firstNameEditText;
@@ -38,7 +41,10 @@ public class Configuration extends AppCompatActivity {
     private TextInputEditText password2EditText;
     private TextInputLayout bioLayout;
     private TextInputEditText bioEditText;
-    private Button saveButton;
+    private MaterialButton cancelButton;
+    private MaterialButton saveButton;
+    private MaterialButton logoutButton;
+    private MaterialButton deleteAccountButton;
 
     private String originalFirstName;
     private String originalLastName;
@@ -65,6 +71,22 @@ public class Configuration extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Settings changed", Toast.LENGTH_SHORT).show();
             }
         });
+
+        // Logout
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout();
+            }
+        });
+
+        // Delete account
+        deleteAccountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteAccount();
+            }
+        });
     }
 
     private void assignElements() {
@@ -78,7 +100,10 @@ public class Configuration extends AppCompatActivity {
         password2EditText = findViewById(R.id.password2_edit);
         bioLayout = findViewById(R.id.bio_layout);
         bioEditText = findViewById(R.id.bio_edit);
+        cancelButton = findViewById(R.id.cancel_button);
         saveButton = findViewById(R.id.save_button);
+        logoutButton = findViewById(R.id.logout_button);
+        deleteAccountButton = findViewById(R.id.delete_account_button);
     }
 
     private void populateInitialValues() {
@@ -255,6 +280,48 @@ public class Configuration extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<AccountResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
+    // Make an API to logout the user, delete the device stored credentials and go to the landing page
+    private void logout() {
+        Endpoints endpoints = APIClient.retrofit.create(Endpoints.class);
+        Call<ResponseBody> call = endpoints.logout("Token " + credentials.getToken());
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                flushStoredCredentials(getApplicationContext());
+                var landingPageIntent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(landingPageIntent);
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+    }
+
+    // Delete the account of the user
+    private void deleteAccount() {
+        Endpoints endpoints = APIClient.retrofit.create(Endpoints.class);
+        Call<ResponseBody> call = endpoints.deleteUser(
+                "Token " + credentials.getToken(),
+                credentials.getUserPK());
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    flushStoredCredentials(getApplicationContext());
+                    var landingPageIntent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(landingPageIntent);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
 
             }
         });

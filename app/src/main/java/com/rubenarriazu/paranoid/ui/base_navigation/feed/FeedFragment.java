@@ -1,4 +1,4 @@
-package com.rubenarriazu.paranoid.ui.feed;
+package com.rubenarriazu.paranoid.ui.base_navigation.feed;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
